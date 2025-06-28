@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"This test case registers a new user with valid data and verifies the welcome message.","16951","Test Registration with Valid Data","testcases","Sat Jun 28 14:14:53 PST 2025","broken","Sat Jun 28 14:15:10 PST 2025","TestParaBank","paraBank_test","",""
+"","12346","Test Registration with Invalid Data","testcases","Sat Jun 28 14:15:10 PST 2025","passed","Sat Jun 28 14:15:22 PST 2025","TestParaBank","paraBank_test","",""

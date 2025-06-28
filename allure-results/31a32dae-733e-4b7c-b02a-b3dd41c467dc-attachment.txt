@@ -1,0 +1,26 @@
+Error finding element ('id', 'customer.username.errors'): Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="customer.username.errors"]"}
+  (Session info: chrome=137.0.7151.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x11d3b03+62899]
+	GetHandleVerifier [0x0x11d3b44+62964]
+	(No symbol) [0x0x10010f3]
+	(No symbol) [0x0x104980e]
+	(No symbol) [0x0x1049bab]
+	(No symbol) [0x0x10925c2]
+	(No symbol) [0x0x106e554]
+	(No symbol) [0x0x108fd81]
+	(No symbol) [0x0x106e306]
+	(No symbol) [0x0x103d670]
+	(No symbol) [0x0x103e4e4]
+	GetHandleVerifier [0x0x1434793+2556483]
+	GetHandleVerifier [0x0x142fd02+2537394]
+	GetHandleVerifier [0x0x11fa2fa+220586]
+	GetHandleVerifier [0x0x11eaae8+157080]
+	GetHandleVerifier [0x0x11f141d+184013]
+	GetHandleVerifier [0x0x11dba68+95512]
+	GetHandleVerifier [0x0x11dbc10+95936]
+	GetHandleVerifier [0x0x11c6b5a+9738]
+	BaseThreadInitThunk [0x0x75a17ba9+25]
+	RtlInitializeExceptionChain [0x0x77d0c0cb+107]
+	RtlClearBits [0x0x77d0c04f+191]
+

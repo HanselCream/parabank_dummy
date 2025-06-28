@@ -1,0 +1,53 @@
+Error finding element ('xpath', "//a[text()='Register']"): Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[text()='Register']"}
+  (Session info: chrome=137.0.7151.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x4b3b03+62899]
+	GetHandleVerifier [0x0x4b3b44+62964]
+	(No symbol) [0x0x2e10f3]
+	(No symbol) [0x0x32980e]
+	(No symbol) [0x0x329bab]
+	(No symbol) [0x0x3725c2]
+	(No symbol) [0x0x34e554]
+	(No symbol) [0x0x36fd81]
+	(No symbol) [0x0x34e306]
+	(No symbol) [0x0x31d670]
+	(No symbol) [0x0x31e4e4]
+	GetHandleVerifier [0x0x714793+2556483]
+	GetHandleVerifier [0x0x70fd02+2537394]
+	GetHandleVerifier [0x0x4da2fa+220586]
+	GetHandleVerifier [0x0x4caae8+157080]
+	GetHandleVerifier [0x0x4d141d+184013]
+	GetHandleVerifier [0x0x4bba68+95512]
+	GetHandleVerifier [0x0x4bbc10+95936]
+	GetHandleVerifier [0x0x4a6b5a+9738]
+	BaseThreadInitThunk [0x0x75a17ba9+25]
+	RtlInitializeExceptionChain [0x0x77d0c0cb+107]
+	RtlClearBits [0x0x77d0c04f+191]
+
+Element ('xpath', "//a[text()='Register']") not found for clicking.
+Error finding element ('id', 'customer.firstName'): Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="customer.firstName"]"}
+  (Session info: chrome=137.0.7151.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x4b3b03+62899]
+	GetHandleVerifier [0x0x4b3b44+62964]
+	(No symbol) [0x0x2e10f3]
+	(No symbol) [0x0x32980e]
+	(No symbol) [0x0x329bab]
+	(No symbol) [0x0x3725c2]
+	(No symbol) [0x0x34e554]
+	(No symbol) [0x0x36fd81]
+	(No symbol) [0x0x34e306]
+	(No symbol) [0x0x31d670]
+	(No symbol) [0x0x31e4e4]
+	GetHandleVerifier [0x0x714793+2556483]
+	GetHandleVerifier [0x0x70fd02+2537394]
+	GetHandleVerifier [0x0x4da2fa+220586]
+	GetHandleVerifier [0x0x4caae8+157080]
+	GetHandleVerifier [0x0x4d141d+184013]
+	GetHandleVerifier [0x0x4bba68+95512]
+	GetHandleVerifier [0x0x4bbc10+95936]
+	GetHandleVerifier [0x0x4a6b5a+9738]
+	BaseThreadInitThunk [0x0x75a17ba9+25]
+	RtlInitializeExceptionChain [0x0x77d0c0cb+107]
+	RtlClearBits [0x0x77d0c04f+191]
+

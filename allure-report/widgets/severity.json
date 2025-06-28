@@ -1,0 +1,1 @@
+[{"uid":"6e97c33833d0b369","name":"Test Registration with Valid Data","time":{"start":1751091293198,"stop":1751091310149,"duration":16951},"status":"broken","severity":"normal"},{"uid":"88986b3e517c324a","name":"Test Registration with Invalid Data","time":{"start":1751091310178,"stop":1751091322524,"duration":12346},"status":"passed","severity":"normal"}]
