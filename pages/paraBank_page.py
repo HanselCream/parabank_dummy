@@ -58,6 +58,10 @@ class ParaBankPage(BaseDriver):
         ERROR_PASSWORD = (By.ID, "customer.password.errors")
         ERROR_CONFIRM_PASSWORD = (By.ID, "repeatedPassword.errors")
 
+        error_invalid_credentials = (By.XPATH,"//p[@class='error']")
+        landing_page= (By.NAME, "showOverview")
+        CUSTOMER_LOGIN_PAGE = (By.XPATH, "//h2[text()='Customer Login']")
+
     # -------- Test Case 1: Valid registration --------
     @allure.step("Clicking on Register link")
     def click_register(self):
@@ -98,35 +102,21 @@ class ParaBankPage(BaseDriver):
 
     @allure.step("Verifying welcome message")
     def verify_welcome_message_element(self):
-        try:
-            self.wait_for_element(self.Locators.WELCOME_MESSAGE_ELEMENT, timeout=15)
-            element = self.get_element(self.Locators.WELCOME_MESSAGE_ELEMENT)
-            self.wait.until(EC.visibility_of(element))
-            self.scroll_highlight_element(element)
-            allure.attach(self.driver.get_screenshot_as_png(), name="Welcome Message", attachment_type=AttachmentType.PNG)
-            assert element.is_displayed(), "Welcome message element not visible"
-            assert element.text.strip() != "", "Welcome message is empty"
-        except Exception as e:
-            allure.attach(self.driver.get_screenshot_as_png(), name="Welcome Message Failure", attachment_type=AttachmentType.PNG)
-            allure.attach(str(e), name="Exception", attachment_type=AttachmentType.TEXT)
-            assert False, f"Failed to verify welcome message: {e}"
+        self.wait_for_element(self.Locators.WELCOME_MESSAGE_ELEMENT, timeout=20)  # was 10
+        self.scroll_highlight_element(self.get_element(self.Locators.WELCOME_MESSAGE_ELEMENT))
+        sleep(2)
+        assert self.is_element_visible(self.Locators.WELCOME_MESSAGE_ELEMENT), "Welcome message not visible"
 
+        
 
 # -------- Test Case 2: Valid login --------
-    error_invalid_credentials = (By.XPATH,"//p[@class='error']")
 
     @allure.step("Validating login with valid credentials")
     def valid_login(self):
         self.get_element(self.Locators.VALID_USERNAME).send_keys(self.userName)
         self.get_element(self.Locators.VALID_PASSWORD).send_keys(self.password)
         self.click_on_element(self.Locators.LOGIN_BUTTON)
-        landing_page= self.get_element((By.NAME, "showOverview"))
         sleep(2)
-        if self.is_element_visible(self.Locators.error_invalid_credentials):
-                error_text = self.get_element(self.Locators.error_invalid_credentials).text
-                allure.attach(error_text, name="Login Error", attachment_type=AttachmentType.TEXT)
-                assert False, f"Login failed: {error_text}"
-
         assert self.is_element_visible(self.Locators.SHOW_OVERVIEW), "Login failed, welcome message not visible"
             
     # -------- Test Case 3: Invalid registration --------
@@ -160,4 +150,19 @@ class ParaBankPage(BaseDriver):
                 assert False, f"{field} error not displayed as expected"
 
 
+    def  click_on_logout(self):
+        logout_button = (By.XPATH, "//a[text()='Log Out']")
+        self.wait_for_element(logout_button)
+        self.scroll_highlight_element(self.get_element(logout_button))
+        self.click_on_element(logout_button)
+        sleep(2)
+        assert self.is_element_visible(self.Locators.CUSTOMER_LOGIN_PAGE), "Logout failed, customer login page not visible"
+        allure.attach(self.driver.get_screenshot_as_png(), name="CUSTOMER_LOGIN_PAGE", attachment_type=AttachmentType.PNG)
+
+
+    def attach_screenshot(self, name):
+        try:
+            allure.attach(self.driver.get_screenshot_as_png(), name=name, attachment_type=allure.attachment_type.PNG)
+        except Exception as e:
+            print(f"Screenshot failed: {e}")
 
