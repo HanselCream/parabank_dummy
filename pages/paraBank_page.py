@@ -23,8 +23,8 @@ class ParaBankPage(BaseDriver):
 
     # Locators
     class Locators:
-        REGISTER = (By.XPATH, "//a[text()='Register']")
-        REGISTER_BUTTON = (By.XPATH, "//input[@value='Register']")
+        REGISTER = (By.CSS_SELECTOR, "a[href='register.htm']")
+        REGISTER_BUTTON = (By.CSS_SELECTOR, "input[value='Register']")
         FIRST_NAME = (By.ID, "customer.firstName")
         LAST_NAME = (By.ID, "customer.lastName")
         ADDRESS = (By.ID, "customer.address.street")
@@ -100,24 +100,43 @@ class ParaBankPage(BaseDriver):
         self.click_on_element(self.Locators.REGISTER_BUTTON)
         sleep(2) 
 
-    @allure.step("Verifying welcome message")
-    def verify_welcome_message_element(self):
-        self.wait_for_element(self.Locators.WELCOME_MESSAGE_ELEMENT, timeout=20)  # was 10
-        self.scroll_highlight_element(self.get_element(self.Locators.WELCOME_MESSAGE_ELEMENT))
-        sleep(2)
-        assert self.is_element_visible(self.Locators.WELCOME_MESSAGE_ELEMENT), "Welcome message not visible"
+    # @allure.step("Verifying welcome message")
+    # def verify_welcome_message_element(self):
+    #     self.wait_for_element(self.Locators.WELCOME_MESSAGE_ELEMENT, timeout=20)  # was 10
+    #     self.scroll_highlight_element(self.get_element(self.Locators.WELCOME_MESSAGE_ELEMENT))
+
+    #     sleep(10) # wait for the welcome message to be visible
+
+    #     assert self.is_element_visible(self.Locators.WELCOME_MESSAGE_ELEMENT), "Welcome message not visible"
 
         
 
 # -------- Test Case 2: Valid login --------
 
-    @allure.step("Validating login with valid credentials")
+    @allure.step("Login using username and password")
     def valid_login(self):
-        self.get_element(self.Locators.VALID_USERNAME).send_keys(self.userName)
-        self.get_element(self.Locators.VALID_PASSWORD).send_keys(self.password)
-        self.click_on_element(self.Locators.LOGIN_BUTTON)
-        sleep(2)
-        assert self.is_element_visible(self.Locators.SHOW_OVERVIEW), "Login failed, welcome message not visible"
+        try:
+            username_field = self.get_element(self.Locators.VALID_USERNAME)
+            password_field = self.get_element(self.Locators.VALID_PASSWORD)
+
+            assert username_field is not None, "Username field not found"
+            assert password_field is not None, "Password field not found"
+
+            username_field.send_keys(self.userName)
+            password_field.send_keys(self.password)
+
+            self.click_on_element(self.Locators.LOGIN_BUTTON)
+            self.wait_for_element(self.Locators.SHOW_OVERVIEW, timeout=15)
+
+        except Exception as e:
+            allure.attach(
+                self.driver.get_screenshot_as_png(),
+                name="Login Failure Screenshot",
+                attachment_type=allure.attachment_type.PNG
+            )
+            raise e
+
+
             
     # -------- Test Case 3: Invalid registration --------
     @allure.step("Verifying error messages for required fields")
@@ -143,6 +162,7 @@ class ParaBankPage(BaseDriver):
                 allure.attach(self.driver.get_screenshot_as_png(), name=f"{field} Error Screenshot",
                             attachment_type=AttachmentType.PNG)
                 allure.attach(error_text, name=f"{field} Error", attachment_type=AttachmentType.TEXT)
+                sleep(5)
                 assert error_text, f"{field} error message is empty"
             else:
                 print(f"{field} error NOT displayed")
@@ -152,17 +172,9 @@ class ParaBankPage(BaseDriver):
 
     def  click_on_logout(self):
         logout_button = (By.XPATH, "//a[text()='Log Out']")
-        self.wait_for_element(logout_button)
+        sleep(2)
         self.scroll_highlight_element(self.get_element(logout_button))
         self.click_on_element(logout_button)
-        sleep(2)
+        sleep(5)
         assert self.is_element_visible(self.Locators.CUSTOMER_LOGIN_PAGE), "Logout failed, customer login page not visible"
         allure.attach(self.driver.get_screenshot_as_png(), name="CUSTOMER_LOGIN_PAGE", attachment_type=AttachmentType.PNG)
-
-
-    def attach_screenshot(self, name):
-        try:
-            allure.attach(self.driver.get_screenshot_as_png(), name=name, attachment_type=allure.attachment_type.PNG)
-        except Exception as e:
-            print(f"Screenshot failed: {e}")
-

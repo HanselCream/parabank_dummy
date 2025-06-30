@@ -1,0 +1,26 @@
+Error finding element ('name', 'username'): Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="username"]"}
+  (Session info: chrome=137.0.7151.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0x11f3b03+62899]
+	GetHandleVerifier [0x0x11f3b44+62964]
+	(No symbol) [0x0x10210f3]
+	(No symbol) [0x0x106980e]
+	(No symbol) [0x0x1069bab]
+	(No symbol) [0x0x10b25c2]
+	(No symbol) [0x0x108e554]
+	(No symbol) [0x0x10afd81]
+	(No symbol) [0x0x108e306]
+	(No symbol) [0x0x105d670]
+	(No symbol) [0x0x105e4e4]
+	GetHandleVerifier [0x0x1454793+2556483]
+	GetHandleVerifier [0x0x144fd02+2537394]
+	GetHandleVerifier [0x0x121a2fa+220586]
+	GetHandleVerifier [0x0x120aae8+157080]
+	GetHandleVerifier [0x0x121141d+184013]
+	GetHandleVerifier [0x0x11fba68+95512]
+	GetHandleVerifier [0x0x11fbc10+95936]
+	GetHandleVerifier [0x0x11e6b5a+9738]
+	BaseThreadInitThunk [0x0x771e7ba9+25]
+	RtlInitializeExceptionChain [0x0x77ccc0cb+107]
+	RtlClearBits [0x0x77ccc04f+191]
+

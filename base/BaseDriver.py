@@ -51,8 +51,15 @@ class BaseDriver:
             return self.driver.find_element(*locator).is_displayed()
         except:
             return False
+        
+    def is_element_present_wait(self, locator, timeout):
+        try:
+            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
+            return True
+        except TimeoutException:
+            return False    
 
-    def wait_for_element(self, locator, timeout=10):
+    def wait_for_visible_element(self, locator, timeout=10):
         WebDriverWait(self.driver, timeout).until(
         EC.visibility_of_element_located(locator)
     )
